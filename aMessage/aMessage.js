@@ -3,7 +3,7 @@ const loginForm = document.getElementById("login_form");
 const usernameInput = document.getElementById("username_input");
 const passwordInput = document.getElementById("password_input");
 const outputDiv = document.getElementById("output_div");
-
+const accountList = [];
 async function loadJSON() {
   try {
     // get file
@@ -11,7 +11,7 @@ async function loadJSON() {
 
     // parse
     const parsedJSON = await logins.json();
-    const accountList = parsedJSON.AccountInfo;
+    accountList = parsedJSON.AccountInfo;
 
     return parsedJSON;
 
@@ -34,7 +34,7 @@ loginForm.addEventListener("submit", function (event){
   let tempUser = usernameInput.value;
   let tempPass = passwordInput.value;
 
-  let outputFlag;
+  /*let outputFlag;
   listCheck: for (const AccountObj of accountList) {
     if (AccountObj.username === tempUser) {
       if (AccountObj.password === tempPass) {
@@ -42,6 +42,16 @@ loginForm.addEventListener("submit", function (event){
         break listCheck;
       }  else {outputFlag = "Wrong Password";}
     } else {outputFlag = "That Username doesn't exist";}
+  }*/
+
+  let profile = array.find((user) => user.username === tempUser);
+  if (user.password === tempPass) {
+    outputFlag = "LOGGED IN YAYYYYYYYY";
+  } else if (user) {
+    outputFlag = "WRONG PASSWORD BOOOO";
+  } else {
+    outputFlag = "YOU AREN'T REAL";
   }
+  
   outputDiv.innerHTML = outputFlag;
 })
