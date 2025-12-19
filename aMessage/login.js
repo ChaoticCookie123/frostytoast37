@@ -1,13 +1,14 @@
-
+//variable decs
 const loginForm = document.getElementById("login_form");
 const usernameInput = document.getElementById("username_input");
 const passwordInput = document.getElementById("password_input");
 const outputDiv = document.getElementById("output_div");
 let accountList = [];
+
 async function loadJSON() {
   try {
     // get file
-    const logins = await fetch("/logins.json");
+    const logins = await fetch("./logins.json");
 
     // parse
     const parsedJSON = await logins.json();
@@ -48,12 +49,15 @@ loginForm.addEventListener("submit", function (event){
   let outputFlag = "something ain't right";
   let profile = accountList.find((user) => user.username === tempUser);
   if (!profile) {
+    //wrong user
     outputFlag = "YOU DON'T EXIST HAHAHAHAHAHA";
   } else if (profile.password === tempPass) {
+    //logged in
     outputFlag = "YOU LOGGED IN MUAHAHAHAHAHA";
   } else {
+    //wrong password
     outputFlag = "WRONG PASSWORD HAHAHAHAHA";
   }
-  
   outputDiv.innerHTML = outputFlag;
+  
 })
