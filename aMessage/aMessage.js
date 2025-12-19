@@ -34,6 +34,7 @@ loginForm.addEventListener("submit", function (event){
   let tempUser = usernameInput.value;
   let tempPass = passwordInput.value;
 
+  //WRONG CODE HERE
   /*let outputFlag;
   listCheck: for (const AccountObj of accountList) {
     if (AccountObj.username === tempUser) {
@@ -45,12 +46,12 @@ loginForm.addEventListener("submit", function (event){
   }*/
 
   let profile = array.find((user) => user.username === tempUser);
-  if (user.password === tempPass) {
-    outputFlag = "LOGGED IN YAYYYYYYYY";
-  } else if (user) {
-    outputFlag = "WRONG PASSWORD BOOOO";
+  if (!user) {
+    outputFlag = "YOU DON'T EXIST HAHAHAHAHAHA";
+  } else if (user.password === tempPass) {
+    outputFlag = "YOU LOGGED IN MUAHAHAHAHAHA";
   } else {
-    outputFlag = "YOU AREN'T REAL";
+    outputFlag = "WRONG PASSWORD HAHAHAHAHA";
   }
   
   outputDiv.innerHTML = outputFlag;
