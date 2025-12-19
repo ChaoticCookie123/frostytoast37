@@ -45,6 +45,7 @@ loginForm.addEventListener("submit", function (event){
     } else {outputFlag = "That Username doesn't exist";}
   }*/
 
+  let outputFlag = "something ain't right";
   let profile = accountList.find((user) => user.username === tempUser);
   if (!profile) {
     outputFlag = "YOU DON'T EXIST HAHAHAHAHAHA";
