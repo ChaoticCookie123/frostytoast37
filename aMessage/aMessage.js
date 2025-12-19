@@ -3,7 +3,7 @@ const loginForm = document.getElementById("login_form");
 const usernameInput = document.getElementById("username_input");
 const passwordInput = document.getElementById("password_input");
 const outputDiv = document.getElementById("output_div");
-const accountList = [];
+let accountList = [];
 async function loadJSON() {
   try {
     // get file
@@ -45,10 +45,10 @@ loginForm.addEventListener("submit", function (event){
     } else {outputFlag = "That Username doesn't exist";}
   }*/
 
-  let profile = array.find((user) => user.username === tempUser);
-  if (!user) {
+  let profile = accountList.find((user) => user.username === tempUser);
+  if (!profile) {
     outputFlag = "YOU DON'T EXIST HAHAHAHAHAHA";
-  } else if (user.password === tempPass) {
+  } else if (profile.password === tempPass) {
     outputFlag = "YOU LOGGED IN MUAHAHAHAHAHA";
   } else {
     outputFlag = "WRONG PASSWORD HAHAHAHAHA";
